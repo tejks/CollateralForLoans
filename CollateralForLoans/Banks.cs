@@ -10,7 +10,6 @@ namespace CollateralForLoans
     {
         private readonly List<Bank> BanksList = new();
 
-
         public void genereteModelByPath(string path)
         {
             string[] csvLines = System.IO.File.ReadAllLines(path);
@@ -36,8 +35,8 @@ namespace CollateralForLoans
 
     class Bank
     {
-        private int Id;
-        private string Name;
+        public int Id { get; }
+        public string Name { get; }
 
         public Bank(int id, string name)
         {

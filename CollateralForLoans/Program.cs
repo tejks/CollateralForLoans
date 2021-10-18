@@ -11,6 +11,12 @@ namespace CollateralForLoans
             banks.genereteModelByPath(@"C:\Users\szymo\Desktop\zadanie\zadanie\small\banks.csv");
 
             banks.getAllBanks();
+
+            Facilities facilities = new();
+
+            facilities.genereteModelByPath(@"C:\Users\szymo\Desktop\zadanie\zadanie\small\facilities.csv");
+
+            facilities.getAllFacilities();
         }
     }
 }
