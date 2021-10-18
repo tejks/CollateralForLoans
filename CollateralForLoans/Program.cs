@@ -6,7 +6,11 @@ namespace CollateralForLoans
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Banks banks = new();
+
+            banks.genereteModelByPath(@"C:\Users\szymo\Desktop\zadanie\zadanie\small\banks.csv");
+
+            banks.getAllBanks();
         }
     }
 }
