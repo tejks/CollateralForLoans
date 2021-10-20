@@ -34,12 +34,12 @@ namespace CollateralForLoans
 
         static double CalcFacilityCost(Facility facility)
         {
-            return facility.Amount * facility.InterestRate;
+            return Math.Round(facility.Amount * facility.InterestRate, 2);
         }
 
         static double CalcLoanCost(Loan loan)
         {
-            return loan.Amount * loan.InterestRate;
+            return Math.Round(loan.Amount * loan.InterestRate, 2);
         }
 
         static void SaveToFile(List<string> result)
