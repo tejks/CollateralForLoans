@@ -26,7 +26,7 @@ namespace CollateralForLoans
                 double facilityCost = CalcFacilityCost(facility);
                 double loanCost = CalcLoanCost(loan);
 
-                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(loanCost + facilityCost)}");
+                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(Math.Round(loanCost + facilityCost))}");
             }
 
             SaveToFile(result);
