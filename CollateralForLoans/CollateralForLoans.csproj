@@ -3,10 +3,23 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource></Win32Resource>
+    <StartupObject>CollateralForLoans.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Remove="Resources\banks.csv" />
+    <None Remove="Resources\covenants.csv" />
+    <None Remove="Resources\facilities.csv" />
+    <None Remove="Resources\loans.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\banks.csv" />
+    <Resource Include="Resources\covenants.csv" />
+    <Resource Include="Resources\facilities.csv" />
+    <Resource Include="Resources\loans.csv" />
   </ItemGroup>
 
 </Project>

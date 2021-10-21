@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using CollateralForLoans.Models;
 using System.Text;
+using System.IO;
+using System.Reflection;
 
 namespace CollateralForLoans
 {
@@ -9,11 +11,11 @@ namespace CollateralForLoans
     {
         static void Main(string[] args)
         {
-            CovenantController covenants = new(path: @".\Resources\covenants.csv");
+            CovenantController covenants = new(path: @"A:\zadanie\large\covenants.csv");
 
-            FacilitieController facilities = new(path: @".\Resources\facilities.csv", covenants.Collection);
+            FacilitieController facilities = new(path: @"A:\zadanie\large\facilities.csv", covenants.Collection);
 
-            LoanController loans = new(path: @".\Resources\loans.csv");
+            LoanController loans = new(path: @"A:\zadanie\large\loans.csv");
 
             List<string> result = new();
 
@@ -26,7 +28,7 @@ namespace CollateralForLoans
                 double facilityCost = CalcFacilityCost(facility);
                 double loanCost = CalcLoanCost(loan);
 
-                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(Math.Round(loanCost + facilityCost))}");
+                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(Math.Round(loanCost + facilityCost, 2))}");
             }
 
             SaveToFile(result);
