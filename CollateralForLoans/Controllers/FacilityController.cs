@@ -8,11 +8,11 @@ using CollateralForLoans.Models;
 
 namespace CollateralForLoans
 {
-    class FacilitieController : BaseController<Facility>, IBaseController<Facility>
+    class FacilityController : BaseController<Facility>, IBaseController<Facility>
     {
         private List<Covenant> CovenantsList;
 
-        public FacilitieController(string path, List<Covenant> covenants)
+        public FacilityController(string path, List<Covenant> covenants)
         {
             CovenantsList = covenants;
 
@@ -50,7 +50,9 @@ namespace CollateralForLoans
 
         private bool CheckRestrictions(Facility facility, Loan loan)
         {
-            List<Covenant> data = CovenantsList.FindAll(e => e.FacilityId == facility.Id && e.BannedState == loan.State && (e.MaxDefaultLikelihood != null && e.MaxDefaultLikelihood < loan.DefaultLikelihood));
+            Covenant maxDefault = CovenantsList.Find(e => e.FacilityId == facility.Id && e.MaxDefaultLikelihood != null);
+
+            List<Covenant> data = CovenantsList.FindAll(e => e.FacilityId == facility.Id && e.BannedState == loan.State && maxDefault.MaxDefaultLikelihood < loan.DefaultLikelihood);
 
             return data.Count > 0;
         }

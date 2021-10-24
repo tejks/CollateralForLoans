@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using CollateralForLoans.Models;
 using System.Text;
-using System.IO;
-using System.Reflection;
 
 namespace CollateralForLoans
 {
@@ -13,7 +11,7 @@ namespace CollateralForLoans
         {
             CovenantController covenants = new(path: @"A:\zadanie\large\covenants.csv");
 
-            FacilitieController facilities = new(path: @"A:\zadanie\large\facilities.csv", covenants.Collection);
+            FacilityController facilities = new(path: @"A:\zadanie\large\facilities.csv", covenants.Collection);
 
             LoanController loans = new(path: @"A:\zadanie\large\loans.csv");
 
