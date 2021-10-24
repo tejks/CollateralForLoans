@@ -7,13 +7,15 @@ namespace CollateralForLoans
 {
     class Program
     {
+        static readonly string basePath = @"A:\zadanie\";
+
         static void Main(string[] args)
         {
-            CovenantController covenants = new(path: @"A:\zadanie\large\covenants.csv");
+            CovenantController covenants = new(path: basePath + @"large\covenants.csv");
 
-            FacilityController facilities = new(path: @"A:\zadanie\large\facilities.csv", covenants.Collection);
+            FacilityController facilities = new(path: basePath + @"large\facilities.csv", covenants.Collection);
 
-            LoanController loans = new(path: @"A:\zadanie\large\loans.csv");
+            LoanController loans = new(path: basePath + @"large\loans.csv");
 
             List<string> result = new();
 
@@ -53,7 +55,7 @@ namespace CollateralForLoans
                 csv.AppendLine(line);
             }
 
-            System.IO.File.WriteAllText(@".\result.csv", csv.ToString());
+            System.IO.File.WriteAllText(basePath + @"\result.csv", csv.ToString());
         }
     }
 }
