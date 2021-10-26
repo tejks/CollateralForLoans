@@ -7,13 +7,15 @@ namespace CollateralForLoans
 {
     class Program
     {
+        static readonly string basePath = @"A:\task\";
+
         static void Main(string[] args)
         {
-            CovenantController covenants = new(path: @".\Resources\covenants.csv");
+            CovenantController covenants = new(path: basePath + @"large\covenants.csv");
 
-            FacilitieController facilities = new(path: @".\Resources\facilities.csv", covenants.Collection);
+            FacilityController facilities = new(path: basePath + @"large\facilities.csv", covenants.Collection);
 
-            LoanController loans = new(path: @".\Resources\loans.csv");
+            LoanController loans = new(path: basePath + @"large\loans.csv");
 
             List<string> result = new();
 
@@ -26,7 +28,7 @@ namespace CollateralForLoans
                 double facilityCost = CalcFacilityCost(facility);
                 double loanCost = CalcLoanCost(loan);
 
-                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(Math.Round(loanCost + facilityCost))}");
+                result.Add($"{loan.Id},{facility.Id},{Convert.ToString(facilityCost)},{Convert.ToString(loanCost)},{Convert.ToString(Math.Round(loanCost + facilityCost, 2))}");
             }
 
             SaveToFile(result);
@@ -53,7 +55,7 @@ namespace CollateralForLoans
                 csv.AppendLine(line);
             }
 
-            System.IO.File.WriteAllText(@".\result.csv", csv.ToString());
+            System.IO.File.WriteAllText(basePath + @"\result.csv", csv.ToString());
         }
     }
 }
